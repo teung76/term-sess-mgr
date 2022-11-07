@@ -1,0 +1,176 @@
+{
+  "name": "term-sess-mgr",
+  "displayName": "Terminal Sessions Manager",
+  "description": "Configure and manage multiple terminal sessions.",
+  "version": "1.0.2",
+  "publisher" : "teung76",
+  "engines": {
+    "vscode": "^1.72.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:terminal-sessions"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+		"viewsContainers": {
+			"activitybar": [{
+				"id": "term-sess-mgr",
+				"title": "Terminal",
+				"icon": "$(terminal)"
+			}]
+		},
+		"views": {
+			"term-sess-mgr": [{
+				"id": "terminal-sessions",
+				"name": "Sessions"
+			}]
+		},
+		"commands": [
+			{
+				"command": "term-sess-mgr.editConfiguration",
+				"title": "Configure Local Terminal Sessions",
+				"icon": "$(edit)"
+	    	},
+			{
+				"command": "term-sess-mgr.refreshConfiguration",
+				"title": "Refresh Terminal Sessions",
+				"icon": "$(refresh)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.openAtDefaultArea",
+				"title": "Open on panel",
+				"icon": "$(refresh)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.openAtEditorArea",
+				"title": "Open on Editor's tab",
+				"icon": "$(refresh)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.Rename",
+				"title": "Rename",
+				"icon": "$(edit)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.ChangeShell",
+				"title": "Change shell",
+				"icon": "$(edit)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.ChangeIcon",
+				"title": "Change icon",
+				"icon": "$(edit)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.EnableTab",
+				"title": "Enable TabView",
+				"icon": "$(edit)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.DisableTab",
+				"title": "Disable TabView",
+				"icon": "$(edit)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.EditArguments",
+				"title": "Edit Arguments",
+				"icon": "$(edit)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.Copy",
+				"title": "Copy",
+				"icon": "$(edit)"
+	    	},
+			{
+				"command": "term-sess-mgr.session.Delete",
+				"title": "Delete",
+				"icon": "$(edit)"
+	    	}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "term-sess-mgr.editConfiguration",
+					"when": "view == terminal-sessions",
+					"group": "navigation@1"
+				},
+				{
+					"command": "term-sess-mgr.refreshConfiguration",
+					"when": "view == terminal-sessions",
+					"group": "navigation@2"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "term-sess-mgr.session.openAtEditorArea",
+					"when": "view == terminal-sessions && viewItem == session",
+					"group": "session-menu@1"
+				},
+				{
+					"command": "term-sess-mgr.session.openAtDefaultArea",
+					"when": "view == terminal-sessions && viewItem == session-tab",
+					"group": "session-menu@1"
+				},
+				{
+					"command": "term-sess-mgr.session.Rename",
+					"when": "view == terminal-sessions",
+					"group": "session-menu@2"
+				},
+				{
+					"command": "term-sess-mgr.session.ChangeShell",
+					"when": "view == terminal-sessions",
+					"group": "session-menu@3"
+				},
+				{
+					"command": "term-sess-mgr.session.ChangeIcon",
+					"when": "view == terminal-sessions",
+					"group": "session-menu@4"
+				},
+				{
+					"command": "term-sess-mgr.session.EditArguments",
+					"when": "view == terminal-sessions",
+					"group": "session-menu@5"
+				},
+				{
+					"command": "term-sess-mgr.session.EnableTab",
+					"when": "view == terminal-sessions && viewItem == session",
+					"group": "session-menu@6"
+				},
+				{
+					"command": "term-sess-mgr.session.DisableTab",
+					"when": "view == terminal-sessions && viewItem == session-tab",
+					"group": "session-menu@6"
+				},
+				{
+					"command": "term-sess-mgr.session.Copy",
+					"when": "view == terminal-sessions",
+					"group": "session-menu@7"
+				},
+				{
+					"command": "term-sess-mgr.session.Delete",
+					"when": "view == terminal-sessions",
+					"group": "session-menu@8"
+				}
+			]
+		}
+	},
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.72.0",
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "16.x",
+    "eslint": "^8.26.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.8.4",
+    "@vscode/test-electron": "^2.2.0"
+  }
+}
